@@ -1,0 +1,182 @@
+:root {
+  --cell-size: 100px;
+  --mark-size: calc(var(--cell-size) * 0.9);
+}
+.pname {
+  display: flex;
+  flex-direction: row;
+  border: 2px #bfe2db solid;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.p1n {
+  font-size: 130%;
+}
+
+.p2n {
+  font-size: 130%;
+}
+
+.p1n.turn {
+  color: #18bc9c;
+}
+
+.p2n.turn {
+  color: #18bc9c;
+}
+
+.board {
+  /*width: 100vw;
+  height: 100vh;*/
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto);
+  /*background-color: burlywood;*/
+  margin-top: 0%;
+  background: #fff;
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 2px solid #a8e7db;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after {
+  /*background-color: black;*/
+  background-color: #18bc9c;
+}
+
+.cell.circle::before {
+  background-color: black;
+}
+
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  background-color: lightgrey;
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  content: "";
+  position: absolute;
+  width: calc(var(--mark-size) * 0.15);
+  height: var(--mark-size);
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  width: var(--mark-size);
+  height: var(--mark-size);
+}
+
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+  width: calc(var(--mark-size) * 0.7);
+  height: calc(var(--mark-size) * 0.7);
+  background-color: white;
+}
+
+.winning-message {
+  /*border: 1px black solid;*/
+  display: none;
+  font-size: 1rem;
+  /*display: flex;*/
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+}
+
+.wmsg {
+  margin-bottom: 10%;
+}
+
+.winning-message button {
+  cursor: pointer;
+  /*margin-top: 10%;*/
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+
+  background: #18bc9c;
+  color: #fff;
+  border-radius: 5px;
+  border: 0px solid transparent;
+  font-weight: bold;
+  transition: background 300ms;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  display: inline-block;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.winning-message button:hover {
+  color: #fff;
+  background-color: #0b6956;
+}
+
+.winning-message.show {
+  display: flex;
+}

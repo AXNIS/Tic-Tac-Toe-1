@@ -3,7 +3,43 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="p2.css" />
+    <script src="game.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="whole">
+      <div class="lp">
+        <div class="lp_in">
+          <div class="ttt">Tic Tac Toe</div>
+          <div class="pname">
+            <div class="p1n" id="p1msg"></div>
+            <div class="p2n" id="p2msg"></div>
+          </div>
+          <div class="ttt1">
+            <div class="board" id="board">
+              <div class="cell" data-cell></div>
+              <div class="cell" data-cell></div>
+              <div class="cell" data-cell></div>
+              <div class="cell" data-cell></div>
+              <div class="cell" data-cell></div>
+              <div class="cell" data-cell></div>
+              <div class="cell" data-cell></div>
+              <div class="cell" data-cell></div>
+              <div class="cell" data-cell></div>
+            </div>
+            <div class="winning-message" id="winningMessage">
+              <div class="wmsg" data-winning-message-text></div>
+              <button id="restartButton">Restart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lb">
+        <div class="lbh">Leaderboard</div>
+        <div class="ranking" id="rank"></div>
+      </div>
+    </div>
+  </body>
 </html>

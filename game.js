@@ -18,7 +18,12 @@ const winningMessageTextElement = document.querySelector(
   "[data-winning-message-text]"
 );
 const p1_name = document.getElementById("p1msg");
+const score = document.getElementById("smsg");
 const p2_name = document.getElementById("p2msg");
+const rank = document.getElementById("rank");
+
+let s_1 = localStorage.getItem(localStorage.getItem("p_1"));
+let s_2 = localStorage.getItem(localStorage.getItem("p_2"));
 
 let circleTurn;
 
@@ -28,6 +33,9 @@ restartButton.addEventListener("click", startGame);
 
 function startGame() {
   circleTurn = false;
+  scoreUpdate();
+
+  leaderBoard();
 
   let d1 = localStorage.getItem("p_1");
   let d2 = localStorage.getItem("p_2");
@@ -50,7 +58,6 @@ function startGame() {
   });
   setBoardHoverClass();
   winningMessageElement.classList.remove("show");
-  //leader_board();
 }
 
 function handleClick(e) {
@@ -76,6 +83,22 @@ function endGame(draw) {
   if (draw) {
     winningMessageTextElement.innerText = "Draw!";
   } else {
+    let d1 = localStorage.getItem("p_1");
+    let d2 = localStorage.getItem("p_2");
+
+    if (circleTurn) {
+      let s2 = localStorage.getItem(d2);
+      s2++;
+      localStorage.setItem(d2, s2);
+    } else {
+      let s1 = localStorage.getItem(d1);
+      s1++;
+      localStorage.setItem(d1, s1);
+    }
+    scoreUpdate();
+
+    leaderBoard();
+
     winningMessageTextElement.innerText = `${
       circleTurn ? "Player 2" : "Player 1"
     } Wins!`;
@@ -125,7 +148,55 @@ function checkWin(currentClass) {
   });
 }
 
-// function leader_board()
-// {
+function scoreUpdate() {
+  let S_1 = localStorage.getItem(localStorage.getItem("p_1"));
+  let S_2 = localStorage.getItem(localStorage.getItem("p_2"));
+  S_1 = S_1 - s_1;
+  S_2 = S_2 - s_2;
+  score.innerHTML = `${S_1} : ${S_2}`;
+}
 
-// }
+function leaderBoard() {
+  rank.innerHTML = "";
+  let localStorageArray = [];
+  let k = 0;
+  for (i = 0; i < localStorage.length; i++) {
+    if (localStorage.key(i) != "p_1" && localStorage.key(i) != "p_2") {
+      let obj = {
+        userName: localStorage.key(i),
+        wins: parseInt(localStorage.getItem(localStorage.key(i))),
+        //wins: "56",
+      };
+      localStorageArray.push(obj);
+      k++;
+    }
+  }
+
+  let sortedArray = localStorageArray.sort((a, b) => {
+    return b.wins - a.wins;
+  });
+  //return sortedArray;
+
+  for (let i = 0; i < sortedArray.length; i++) {
+    let idx = document.createElement("div");
+    idx.className = `rows ${i + 1}`;
+
+    let sn = document.createElement("div");
+    sn.className = "serialNumber";
+    sn.innerHTML = `${i + 1}`;
+    idx.appendChild(sn);
+
+    let un = document.createElement("div");
+    un.className = "user_name";
+    un.innerHTML = `${sortedArray[i].userName}`;
+    idx.appendChild(un);
+
+    let pt = document.createElement("div");
+    pt.className = "pts";
+    pt.innerHTML = `${sortedArray[i].wins}`;
+    idx.appendChild(pt);
+
+    rank.appendChild(idx);
+    idx = document.getElementsByClassName(`rows ${i + 1}`);
+  }
+}

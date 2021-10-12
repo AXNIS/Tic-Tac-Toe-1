@@ -79,3 +79,40 @@ body {
   font-size: 200%;
   background-color: white;
 }
+
+.ranking {
+  display: flex;
+  /*border: 5px black solid;*/
+  height: 100%;
+  flex-direction: column;
+}
+
+.rows {
+  /*border: 2px black solid;*/
+  width: 100%;
+  text-align: center;
+  margin: 2% 0%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.serialNumber {
+  font-family: "Luckiest Guy", "Lato", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-weight: bold !important;
+  color: rgba(0, 0, 0, 0.87);
+  /*border: 2px black solid;*/
+  font-size: 100%;
+}
+
+.user_name {
+  /*border: 2px black solid;*/
+  font-size: 100%;
+}
+
+.pts {
+  /*border: 2px black solid;*/
+  font-family: "Lato", Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 100%;
+}

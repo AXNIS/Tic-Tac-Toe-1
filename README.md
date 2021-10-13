@@ -2,6 +2,7 @@
 
 First Phase: ( Using only: HTML, CSS, JS)
 
--> Responsive 
+-> Responsive
 -> Leaderboard setup
--> 2 player score head to head data display 
+-> 2 player score head to head data display
+-> Leaderboard updation at each score update

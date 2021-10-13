@@ -184,3 +184,10 @@
 .winning-message.show {
   display: flex;
 }
+
+@media screen and (max-width: 600px) {
+  :root {
+    --cell-size: 50px;
+    --mark-size: calc(var(--cell-size) * 0.9);
+  }
+}

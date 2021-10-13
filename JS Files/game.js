@@ -21,6 +21,7 @@ const p1_name = document.getElementById("p1msg");
 const score = document.getElementById("smsg");
 const p2_name = document.getElementById("p2msg");
 const rank = document.getElementById("rank");
+//const tb = document.getElementById("tableid");
 
 let s_1 = localStorage.getItem(localStorage.getItem("p_1"));
 let s_2 = localStorage.getItem(localStorage.getItem("p_2"));
@@ -197,6 +198,5 @@ function leaderBoard() {
     idx.appendChild(pt);
 
     rank.appendChild(idx);
-    idx = document.getElementsByClassName(`rows ${i + 1}`);
   }
 }
